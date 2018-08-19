@@ -1,0 +1,5 @@
+1, audi, 5, 5
+2, bmw, 4, 6
+3, lada, 9, 9
+4, range rover, 12, 12
+5, bmw, 3, 3

@@ -1,10 +1,7 @@
 package com.gmail.trair8.model;
 
-import com.gmail.trair8.service.TaxiService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.util.concurrent.ExecutionException;
 
 public class Passenger implements Runnable {
 
@@ -16,15 +13,15 @@ public class Passenger implements Runnable {
     private int futureX;
     private int futureY;
     private Car car;
-    private TaxiService taxiService;
+    private TaxiPark taxiPark;
 
-    public Passenger(String login, int currentX, int currentY, int futureX, int futureY, TaxiService taxiService) {
+    public Passenger(String login, int currentX, int currentY, int futureX, int futureY, TaxiPark taxiPark) {
         this.login = login;
         this.currentX = currentX;
         this.currentY = currentY;
         this.futureX = futureX;
         this.futureY = futureY;
-        this.taxiService = taxiService;
+        this.taxiPark = taxiPark;
     }
 
     public String getLogin() {
@@ -60,19 +57,20 @@ public class Passenger implements Runnable {
     @Override
     public void run() {
         try {
-            this.setCar(taxiService.getCar(this).get());
+            this.setCar(taxiPark.getCar(this).get());
+            System.out.println(car);
             LOGGER.debug(this);
-            System.out.println("car " + car.getName() + " rides");
+            System.out.println(login + " car " + car.getId() + " rides");
             car.move(currentX, currentY);
-            System.out.println("car " + car.getName() + " arrived");
+            System.out.println(login + " car " + car.getId() + " arrived");
             car.move(futureX, futureY);
-            System.out.println("car " + car.getName() + " finished");
-            taxiService.returnCar(getCar());
+            System.out.println(login + " car " + car.getId() + " finished");
+            taxiPark.returnCar(getCar());
+        }catch (TaxiParkException e){
+            LOGGER.error(e);
         }catch (InterruptedException e){
             Thread.currentThread().interrupt();
             LOGGER.error(e);
-        }catch (ExecutionException e){
-
         }
     }
 }
