@@ -37,3 +37,9 @@
 2018-08-19T16:54:43,454 [DEBUG] (Passenger.java:62) - Passenger{login='2', currentX=6, currentY=3, car=Car{name='audi', currentX=5, currentY=5}}
 2018-08-19T16:54:43,453 [DEBUG] (Passenger.java:62) - Passenger{login='0', currentX=13, currentY=4, car=Car{name='lada', currentX=9, currentY=9}}
 2018-08-19T16:54:43,452 [DEBUG] (Passenger.java:62) - Passenger{login='1', currentX=27, currentY=48, car=Car{name='range rover', currentX=12, currentY=12}}
+2018-08-19T17:20:51,969 [DEBUG] (Passenger.java:62) - Passenger{login='1', currentX=17, currentY=44, car=Car{name='bmw', currentX=4, currentY=6}}
+2018-08-19T17:20:51,981 [DEBUG] (Passenger.java:62) - Passenger{login='2', currentX=9, currentY=8, car=Car{name='lada', currentX=9, currentY=9}}
+2018-08-19T17:20:51,983 [DEBUG] (Passenger.java:62) - Passenger{login='0', currentX=35, currentY=21, car=Car{name='range rover', currentX=12, currentY=12}}
+2018-08-19T17:22:58,290 [DEBUG] (Passenger.java:62) - Passenger{login='2', currentX=31, currentY=14, car=Car{name='audi', currentX=5, currentY=5}}
+2018-08-19T17:22:58,283 [DEBUG] (Passenger.java:62) - Passenger{login='0', currentX=29, currentY=49, car=Car{name='range rover', currentX=12, currentY=12}}
+2018-08-19T17:22:58,288 [DEBUG] (Passenger.java:62) - Passenger{login='1', currentX=7, currentY=19, car=Car{name='lada', currentX=9, currentY=9}}

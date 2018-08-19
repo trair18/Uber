@@ -10,7 +10,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class TaxiPark {
 
-    private static AtomicReference<TaxiPark> instance;
+    private static AtomicReference<TaxiPark> instance = new AtomicReference<>(null);
 
     private static List<Car> cars = new ArrayList<>();
 
@@ -30,14 +30,14 @@ public class TaxiPark {
     }
 
     public static TaxiPark getInstance() {
-        try {
-            lock.lock();
-            if (instance == null) {
-                instance = new AtomicReference<>(new TaxiPark());
+            if (instance.get() == null){
+                try {
+                    lock.lock();
+                    instance.set(new TaxiPark());
+                }finally {
+                    lock.unlock();
+                }
             }
-        } finally {
-            lock.unlock();
-        }
         return instance.get();
     }
 
