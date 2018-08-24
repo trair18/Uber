@@ -1,5 +1,7 @@
 package com.gmail.trair8.model;
 
+import com.gmail.trair8.exception.CarException;
+import com.gmail.trair8.exception.TaxiParkException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -57,19 +59,16 @@ public class Passenger implements Runnable {
     @Override
     public void run() {
         try {
-            this.setCar(taxiPark.getCar(this).get());
+            this.setCar(taxiPark.requestCar(this).get());
             System.out.println(car);
             LOGGER.debug(this);
-            System.out.println(login + " car " + car.getId() + " rides");
+            System.out.println("Car " + car.getId() + " drives to passenger " + login);
             car.move(currentX, currentY);
-            System.out.println(login + " car " + car.getId() + " arrived");
+            System.out.println("Car " + car.getId() + " started ride with passenger " + login);
             car.move(futureX, futureY);
-            System.out.println(login + " car " + car.getId() + " finished");
-            taxiPark.returnCar(getCar());
-        }catch (TaxiParkException e){
-            LOGGER.error(e);
-        }catch (InterruptedException e){
-            Thread.currentThread().interrupt();
+            System.out.println("Car " + car.getId() + "finished ride with passenger " + login);
+            taxiPark.releaseCar(getCar());
+        } catch (TaxiParkException | CarException e) {
             LOGGER.error(e);
         }
     }

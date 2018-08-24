@@ -53,3 +53,7 @@ fabric.properties
 
 .idea
 *.iml
+
+#Custom
+lib/
+logs/

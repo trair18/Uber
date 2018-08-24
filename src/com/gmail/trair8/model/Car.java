@@ -1,5 +1,7 @@
 package com.gmail.trair8.model;
 
+import com.gmail.trair8.exception.CarException;
+
 import java.util.concurrent.TimeUnit;
 
 public class Car {
@@ -31,9 +33,15 @@ public class Car {
         return currentY;
     }
 
-    public void move (int x, int y) throws InterruptedException{
+    public void move (int x, int y) throws CarException {
         double distance = Math.hypot(x - this.getCurrentX(),y - this.getCurrentY());
-        TimeUnit.SECONDS.sleep((int)distance/4);
+        try {
+            TimeUnit.SECONDS.sleep((int) distance / 4);
+        }catch (InterruptedException e){
+            Thread.currentThread().interrupt();
+            throw new CarException("Ride was interrupted!" ,e);
+        }
+
         currentX = x;
         currentY = y;
     }
