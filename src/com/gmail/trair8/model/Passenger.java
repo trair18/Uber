@@ -66,7 +66,7 @@ public class Passenger implements Runnable {
             car.move(currentX, currentY);
             System.out.println("Car " + car.getId() + " started ride with passenger " + login);
             car.move(futureX, futureY);
-            System.out.println("Car " + car.getId() + "finished ride with passenger " + login);
+            System.out.println("Car " + car.getId() + " finished ride with passenger " + login);
             taxiPark.releaseCar(getCar());
         } catch (TaxiParkException | CarException e) {
             LOGGER.error(e);

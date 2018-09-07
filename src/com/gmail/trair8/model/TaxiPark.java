@@ -21,7 +21,7 @@ public class TaxiPark {
     private static Lock lock = new ReentrantLock();
     private final Semaphore semaphore;
 
-    public TaxiPark(List<Car> cars) {
+    private TaxiPark(List<Car> cars) {
         this.cars = cars;
         semaphore = new Semaphore(cars.size(), true);
     }
